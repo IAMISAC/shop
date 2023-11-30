@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.shopping-cart {
+  width: 80%;
+  margin: 80px auto;
+  background: #fff;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  border-bottom: 1px solid #e1e8ee;
+  padding: 20px 30px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.item {
+  padding: 20px 30px;
+  display: flex;
+  border-top: 1px solid #e1e8ee;
+}
+
+.buttons {
+  padding-top: 10px;
+  margin-right: 20px;
+}
+
+.delete-btn {
+  width: 18px;
+  height: 17px;
+  cursor: pointer;
+  /* Use your background image here */
+}
+
+.image {
+  margin-right: 20px;
+}
+
+.description {
+  padding-top: 10px;
+  margin-right: 20px;
+  width: 115px;
+}
+
+.description span {
+  font-size: 14px;
+  color: #43484d;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #86939e;
+}
+
+.quantity {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.quantity input {
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484d;
+  font-weight: 300;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  background-color: #e1e8ee;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.minus-btn img {
+  margin-bottom: 3px;
+}
+
+.plus-btn img {
+  margin-top: 2px;
+}
+
+button:focus,
+input:focus {
+  outline: 0;
+}
+
+.total-price {
+  width: 83px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484d;
+  font-weight: 300;
+}

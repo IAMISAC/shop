@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Shop Homepage - Start Bootstrap Template</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="../css/mainstyles.css" rel="stylesheet" />
+  <!-- Inline styles omitted for brevity -->
+</head>
+<body>
+<!-- Navigation omitted for brevity -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 140px; font-size: 24px;">
+  <div class="container px-4 px-lg-5">
+
+    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-icons ms-auto">
+
+        <div class="navbar-brand mx-auto">
+          <h1 id="logo" class="display-4 fw-bolder" style="font-size: 70px;">CLOS</h1>
+        </div>
+
+        <a href="#" class="nav-icon" id="search-icon">
+          <i class="bi bi-search"></i>
+        </a>
+
+        <!-- 검색창 (초기에는 숨김) -->
+        <div id="search-box" style="display: none;">
+          <input type="text" id="search-input" aria-label="검색">
+        </div>
+
+        <a href="login.html" class="nav-icon">
+          <i class="bi bi-person"></i>
+        </a>
+        <a href="../cart.html" class="nav-icon">
+          <i class="bi bi-cart"></i>
+        </a>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</nav>
+<!-- Header -->
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">SIGN UP</h1>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+  <form action="/member/join" method="post" style="width: 50%; max-width: 500px; margin: auto;">
+    <h1 style="font-weight: bold; text-align: center; margin-bottom: 20px;">회원가입</h1>
+    <div style="margin-bottom: 10px; display: flex;">
+      <input type="text" id="mid" name="mid" placeholder="아이디" required style="flex: 1; margin-right: 5px;">
+      <button type="button" id="checkId">중복 확인</button>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <input type="password" id="mpw" name="mpw" placeholder="비밀번호" required style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 10px;">
+      <input type="password" id="mpwConfirm" placeholder="비밀번호 확인" required style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 10px;">
+      <input type="text" id="mname" name="mname" placeholder="이름" required style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 10px;">
+      <input type="text" id="maddress" name="maddress" placeholder="주소" required style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 20px;">
+      <input type="tel" id="mphoneNumber" name="mphoneNumber" placeholder="전화번호" required style="width: 100%;">
+    </div>
+    <button type="submit" class="btn-primary" style="width: 100%;">회원가입</button>
+  </form>
+</main>
+
+<!-- Footer omitted for brevity -->
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom scripts -->
+<script src="../js/scripts.js"></script>
+</body>
+</html>

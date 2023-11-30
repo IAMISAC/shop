@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Homepage - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/mainstyles.css" rel="stylesheet" />
+        <link href="css/cartstyles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 140px; font-size: 24px;">
+            <div class="container px-4 px-lg-5">
+
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-icons ms-auto">
+
+                        <div class="navbar-brand mx-auto">
+                            <h1 id="logo" class="display-4 fw-bolder" style="font-size: 70px;">CLOS</h1>
+                        </div>
+
+                        <a href="#" class="nav-icon" id="search-icon">
+                            <i class="bi bi-search"></i>
+                        </a>
+                        
+                        <!-- 검색창 (초기에는 숨김) -->
+                        <div id="search-box" style="display: none;">
+                            <input type="text" id="search-input" aria-label="검색">
+                        </div>
+
+                        <a href="../member/myPage" class="nav-icon">
+                            <i class="bi bi-person"></i>
+                        </a>
+                        <a href="../cart" class="nav-icon">
+                            <i class="bi bi-cart"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">카테고리</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- 카테고리 내용 -->
+                <div>여기에 카테고리 내용을 추가하세요.</div>
+            </div>
+        </div>
+
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shopping Cart</h1>
+                </div>
+            </div>
+        </header>
+        
+        <div class="shopping-cart">
+            <div class="title">
+                <div>상품 정보</div>
+                <div>수량</div>
+                <div>가격</div>
+                <div>배송비
+                <!-- <div class="header-item">등록일</div> -->
+            </div>
+           
+            <div class="item">
+              
+              <div class="image">
+                <img src="https://dummyimage.com/150x100" alt="" />
+              </div>
+           
+              <div class="description">
+                <span>캐시미어 목폴라 니트티</span>
+              </div>
+           
+              <div class="quantity">
+                <button class="minus-btn" type="button" name="button">
+                    -
+                </button>
+                <input type="text" name="name" value="1">
+                <button class="plus-btn" type="button" name="button">
+                  +
+                </button>
+              </div>
+           
+              <div class="total-price">33000원</div>
+              <div class="buttons">
+                <span class="delete-btn">삭제하기</span>
+              </div>
+            </div>
+            <div class="cart-total">
+                <div class="price">
+                    <div class="title">상품 합계</div>
+                    <div class="content">9,600원</div>
+                </div>
+                <div class="price">
+                    <div class="title">배송비</div>
+                    <div class="content">0원</div>
+                </div>
+                <div class="total">
+                    <div class="title bold">합계</div>
+                    <div class="content bold">9,600원</div>
+                </div>
+            </div>
+        
+            <div class="btn-wrapper">
+                <button class="order-btn">구매하기</button>
+            </div>
+        </div>
+
+        
+        
+           
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="text-white">☻ 준등기 안내 ☻</h4>
+                        <br>
+                        <ul class="text-white list-unstyled">
+                            <li><strong>준등기 금액</strong><br>1,800</li>
+                            <br>
+                            <li><strong><준등기 배송 안내></strong>
+                                <br>
+                                1. 준등기는 우편함으로 배송되며, 배송조회가 가능합니다.<br>
+                                2. 200g 이하만 발송 가능하며, 무게 초과시 추가 배송비 지불 후 택배로 배송됩니다.<br>
+                                3. 택배처럼, 배송요청사항이 적용되지 않습니다.<br>
+                                4. 네이버페이 구매시 준등기 적용이 불가능합니다.<br>
+                                </ol>
+                            </li>
+                            <br>
+                            <li><strong><준등기 이용방법></strong><br>☻ 주문하실때 할인코드 '준등기'를 입력해주세요 ☻</li>
+                        </ul>
+                    </div>
+        
+                    <div class="col-md-6">
+                        <h4 class="text-white">☻ 무통장 입금 안내 ☻</h4>
+                        <br>
+                        <ul class="text-white list-unstyled">
+                            <li><strong><계좌 안내></strong><br>하나은행 1234-1234-1234 박이삭</li>
+                            <br>
+                            <li><strong><무통장 입금안내></strong>
+                                <br>
+                                1. 주문후 48시간 이내 미입금시, 자동 주문 취소됩니다.<br>
+                                2. 무통장 입금으로 구매시, 구매금액의 10%에 해당하는 사은품을 증정합니다.<br>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <p class="m-0 text-center text-white">
+                    상호: (주)CLOS | 대표: 박이삭 | 이메일: clos@clos.com | 주소: 대구 동구 화랑로 525<br>
+                    사업자등록번호: 123-45-67890 │ 개인정보보호책임자 : 홍길동 | 호스팅제공자: (주)CLOS<br>
+                    Copyright &copy; CLOST All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+        <script>
+            
+        </script>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+    
+</html>

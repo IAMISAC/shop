@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/mainstyles.css" rel="stylesheet" />
+    <!-- Inline styles omitted for brevity -->
+</head>
+<body>
+<!-- Navigation omitted for brevity -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 140px; font-size: 24px;">
+    <div class="container px-4 px-lg-5">
+
+        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-icons ms-auto">
+
+                <div class="navbar-brand mx-auto">
+                    <h1 id="logo" class="display-4 fw-bolder" style="font-size: 70px;">CLOS</h1>
+                </div>
+
+                <a href="#" class="nav-icon" id="search-icon">
+                    <i class="bi bi-search"></i>
+                </a>
+
+                <!-- 검색창 (초기에는 숨김) -->
+                <div id="search-box" style="display: none;">
+                    <input type="text" id="search-input" aria-label="검색">
+                </div>
+
+                <a href="login.html" class="nav-icon">
+                    <i class="bi bi-person"></i>
+                </a>
+                <a href="../cart.html" class="nav-icon">
+                    <i class="bi bi-cart"></i>
+                </a>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</nav>
+<!-- Header -->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">My Page</h1>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <h1>My Page</h1>
+    <div>
+        <h2>User Information</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <td th:text="${memberinfo.mid}">User ID</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td th:text="${memberinfo.mname}">User Name</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td th:text="${memberinfo.maddress}">User Address</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td th:text="${memberinfo.mphoneNumber}">User Phone</td>
+            </tr>
+            <!-- 여기에 필요한 다른 필드들을 추가할 수 있습니다 -->
+        </table>
+    </div>
+</main>
+
+<!-- Footer omitted for brevity -->
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom scripts -->
+<script src="../js/scripts.js"></script>
+</body>
+</html>

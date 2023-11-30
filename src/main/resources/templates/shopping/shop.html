@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en", xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/mainstyles.css" rel="stylesheet" />
+</head>
+<body>
+<style>
+    .hidden-table {
+        display: none;
+    }
+
+    .hidden-row {
+        display: none;
+    }
+
+    a {
+        text-decoration: none; /* 밑줄 숨기기 */
+        color: inherit; /* 부모 엘리먼트의 글자색을 상속받음 */
+    }
+
+    /* 선택된 하이퍼링크에 대한 스타일도 추가할 수 있습니다. */
+    a:hover,
+    a:active {
+        text-decoration: none; /* 밑줄 숨기기 */
+        color: inherit; /* 부모 엘리먼트의 글자색을 상속받음 */
+    }
+</style>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 140px; font-size: 24px;">
+    <div class="container px-4 px-lg-5">
+
+        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-icons ms-auto">
+
+                <div class="navbar-brand mx-auto">
+                    <h1 id="logo" class="display-4 fw-bolder" style="font-size: 70px;">CLOS</h1>
+                </div>
+
+                <a href="#" class="nav-icon" id="search-icon">
+                    <i class="bi bi-search"></i>
+                </a>
+
+                <!-- 검색창 (초기에는 숨김) -->
+                <div id="search-box" style="display: none;">
+                    <input type="text" id="search-input" aria-label="검색">
+                </div>
+
+                <a href="../member/myPage" class="nav-icon">
+                    <i class="bi bi-person"></i>
+                </a>
+                <a href="/shopping/cart" class="nav-icon">
+                    <i class="bi bi-cart"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">카테고리</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- 카테고리 내용 -->
+        <div>여기에 카테고리 내용을 추가하세요.</div>
+    </div>
+</div>
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Shop</h1>
+        </div>
+    </div>
+</header>
+
+<!-- Add these tabs above your product section -->
+<div class="text-center mt-4">
+    <button class="btn btn-outline-dark me-2" onclick="filterProducts()">전체</button>
+    <button class="btn btn-outline-dark me-2" onclick="filterProducts('outer')">아우터</button>
+    <button class="btn btn-outline-dark me-2" onclick="filterProducts('top')">상의</button>
+    <button class="btn btn-outline-dark me-2" onclick="filterProducts('bottom')">하의</button>
+</div>
+
+<!-- Section-->
+<section id="productSection" class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div id="productRow" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        </div>
+    </div>
+</section>
+<!-- Pagination -->
+
+<div class="container px-4 px-lg-5 mt-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div id="pagination" class="d-flex justify-content-center mt-4">
+
+            <ul class="pagination flex-wrap">
+                <li class="page-item" th:if="${responseDTO.prev}">
+                    <a class="page-link" th:data-num="${responseDTO.start - 1}">Previous</a>
+                </li>
+                <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
+                    <li th:class="${responseDTO.page==i}?'page-item active':'page-item'">
+                        <a class="page-link" th:data-num="${i}">[[${i}]]</a>
+                    </li>
+                </th:block>
+                <li class="page-item" th:if="${responseDTO.next}">
+                    <a class="page-link" th:data-num="${responseDTO.end + 1}">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    document.querySelector("#pagination").addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const target = e.target;
+
+        if (target.tagName !== 'A') {
+            return;
+        }
+
+        const num = target.getAttribute("data-num");
+        const formObj = document.querySelector("#paginationForm");
+        const inputElement = document.createElement('input');
+        inputElement.type = 'hidden';
+        inputElement.name = 'page';
+        inputElement.value = num;
+        formObj.appendChild(inputElement);
+        formObj.submit();
+    }, false);
+</script>
+
+
+<div class="container px-4 px-lg-5 mt-5">
+    <div id="productRow" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    </div>
+    <div id="pagination" class="d-flex justify-content-center mt-4">
+    </div>
+</div>
+
+
+
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-white">☻ 준등기 안내 ☻</h4>
+                <br>
+                <ul class="text-white list-unstyled">
+                    <li><strong>준등기 금액</strong><br>1,800</li>
+                    <br>
+                    <li><strong><준등기 배송 안내></strong>
+                        <br>
+                        1. 준등기는 우편함으로 배송되며, 배송조회가 가능합니다.<br>
+                        2. 200g 이하만 발송 가능하며, 무게 초과시 추가 배송비 지불 후 택배로 배송됩니다.<br>
+                        3. 택배처럼, 배송요청사항이 적용되지 않습니다.<br>
+                        4. 네이버페이 구매시 준등기 적용이 불가능합니다.<br>
+                        </ol>
+                    </li>
+                    <br>
+                    <li><strong><준등기 이용방법></strong><br>☻ 주문하실때 할인코드 '준등기'를 입력해주세요 ☻</li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <h4 class="text-white">☻ 무통장 입금 안내 ☻</h4>
+                <br>
+                <ul class="text-white list-unstyled">
+                    <li><strong><계좌 안내></strong><br>하나은행 1234-1234-1234 박이삭</li>
+                    <br>
+                    <li><strong><무통장 입금안내></strong>
+                        <br>
+                        1. 주문후 48시간 이내 미입금시, 자동 주문 취소됩니다.<br>
+                        2. 무통장 입금으로 구매시, 구매금액의 10%에 해당하는 사은품을 증정합니다.<br>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <br>
+        <p class="m-0 text-center text-white">
+            상호: (주)CLOS | 대표: 박이삭 | 이메일: clos@clos.com | 주소: 대구 동구 화랑로 525<br>
+            사업자등록번호: 123-45-67890 │ 개인정보보호책임자 : 홍길동 | 호스팅제공자: (주)CLOS<br>
+            Copyright &copy; CLOST All rights reserved.</p>
+    </div>
+</footer>
+</body>
+
+<table class="table hidden-table">
+    <tr th:each="dto:${responseDTO.dtoList}" class="hidden-row">
+        <td class="product-id" th:text="${dto.productId}"></td>
+        <td class="product-name" th:text="${dto.productName}"></td>
+        <td class="product-price" th:text="${dto.productPrice}"></td>
+        <td class="product-image" th:text="${dto.productPrice}"></td>
+        <td class="product-ptype" th:text="${dto.pType}"></td>
+    </tr>
+</table>
+
+
+
+<!-- 제품 카드를 생성하는 JavaScript -->
+<script th:inline="javascript">
+    function addToCart() {
+        // 리디렉션 전에 필요한 경우 여기에 더 많은 로직을 추가할 수 있습니다
+        window.location.href = '/shopping/cart'; // 경로를 프로젝트에 맞게 조정하세요
+    }
+
+    const products = [];
+
+    document.querySelectorAll('.product-name').forEach(function (nameElement, index) {
+        var product = {
+
+            name: nameElement.textContent,
+            productId:document.querySelectorAll('.product-id')[index].textContent,
+            price: document.querySelectorAll('.product-price')[index].textContent,
+            ptype: document.querySelectorAll('.product-ptype')[index].textContent,
+            imageUrl: "https://img.etoday.co.kr/pto_db/2023/09/600/20230927091037_1932803_1200_800.jpg"
+            //imageUrl: "https://thumb.mt.co.kr/06/2023/10/2023100111007263229_1.jpg/dims/optimize/" // 실제 DTO에서 이미지 URL로 교체하세요
+        };
+        products.push(product);
+    });
+
+
+
+    function generateProductCards() {
+        const productRow = document.getElementById('productRow');
+
+        products.forEach(product => {
+            const cardCol = document.createElement('div');
+            cardCol.classList.add('col', 'mb-5');
+            cardCol.innerHTML = `
+            <div class="card h-100">
+                <a href="/shopping/${product.productId}"> <!-- 제품 링크를 추가합니다 -->
+                    <img class="card-img-top" src="${product.imageUrl}" alt="제품 이미지" />
+                    <div class="card-body p-4">
+                        <h5 class="fw-bolder">${product.name}</h5>
+                        <span>${product.price}</span>
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <button class="btn btn-outline-dark mt-auto" onclick="addToCart()">구매하기</button>
+                    </div>
+                </a>
+            </div>
+        `;
+            productRow.appendChild(cardCol);
+        });
+    }
+
+    window.onload = generateProductCards();
+    // document.querySelectorAll('.product-name').forEach(function (nameElement, index) {
+    //     var product = {
+    //         // name: nameElement.textContent,
+    //         // price: document.querySelectorAll('.product-price')[index].textContent,
+    //         ptype: document.querySelectorAll('.p-type')[index].textContent,
+    //         // imageUrl: "https://dummyimage.com/450x300" // 실제 DTO에서 이미지 URL로 교체하세요
+    //     };
+    //     products.push(product);
+    // });
+
+    function filterProducts(category) {
+        const filteredProducts = products.filter(product => category === undefined || product.ptype === category);
+
+        // 기존 카드를 모두 제거
+        const productRow = document.getElementById('productRow');
+        productRow.innerHTML = '';
+
+        // 필터된 상품이 없을 경우 메시지를 표시하거나 다른 처리를 할 수 있습니다.
+        if (filteredProducts.length === 0) {
+            const noProductMessage = document.createElement('p');
+            noProductMessage.textContent = '해당 카테고리에 상품이 없습니다.';
+            productRow.appendChild(noProductMessage);
+            return;
+        }
+
+        // 필터된 상품만을 이용하여 카드 다시 생성
+        filteredProducts.forEach(product => {
+            const cardCol = document.createElement('div');
+            cardCol.classList.add('col', 'mb-5');
+            cardCol.innerHTML = `
+            <div class="card h-100">
+                <a href="/shopping/${product.productId}"> <!-- 제품 링크를 추가합니다 -->
+                    <img class="card-img-top" src="${product.imageUrl}" alt="Product Image" />
+                    <div class="card-body p-4">
+                        <h5 class="fw-bolder">${product.name}</h5>
+                        <span>${product.price}</span>
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <button class="btn btn-outline-dark mt-auto" onclick="addToCart()">구매하기</button>
+                    </div>
+                </a>
+            </div>
+        `;
+            productRow.appendChild(cardCol);
+        });
+    }
+</script>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="../js/scripts.js"></script>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+</html>
